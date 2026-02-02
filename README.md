@@ -3,80 +3,72 @@
 [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI-orange)](https://ai.google.dev/)
-[![TMDB](https://img.shields.io/badge/TMDB-API-green)](https://www.themoviedb.org/)
+[![TMDB API](https://img.shields.io/badge/TMDB%20API-3.0-green)](https://www.themoviedb.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agent-purple)](https://langchain.com/langgraph)
+[![GitHub stars](https://img.shields.io/github/stars/k3re/CineMatchAI?style=social)](https://github.com/k3re/CineMatchAI)
 
-🤖 **AI-Powered Entertainment Agent** that analyzes emotional wavelengths and cinematic tastes to curate personalized movie recommendations through coordinated multi-agent intelligence.
-
----
+<div align="center">
+  <img src="https://img.shields.io/badge/Multi%20Agent-System-purple" alt="Multi Agent"/>
+  <img src="https://img.shields.io/badge/Natural%20Language-Processing-blue" alt="NLP"/>
+  <img src="https://img.shields.io/badge/500k%2B-Movies-green" alt="500k+ Movies"/>
+</div>
 
 ## 📋 Table of Contents
-- [Use Case & Rationale](#-use-case--rationale)
-- [Agent Team Architecture](#🤖-agent-team-architecture)
-- [Installation & Setup](#🚀-installation--setup)
-- [Example Interactions](#💬-example-interactions)
-- [Challenges & Solutions](#⚡-challenges--solutions)
-- [Project Structure](#📁-project-structure)
-- [API Reference](#🔧-api-reference)
-- [Deployment](#🚀-deployment)
-- [Contributing](#🤝-contributing)
-- [License](#📄-license)
-
----
+- [🎯 Use Case & Rationale](#-use-case--rationale)
+- [🤖 Agent Team Architecture](#-agent-team-architecture)
+- [🚀 Quick Start](#-quick-start)
+- [💬 Example Interactions](#-example-interactions)
+- [⚠️ Challenges & Solutions](#️-challenges--solutions)
+- [🛠️ Technical Details](#️-technical-details)
+- [📁 Project Structure](#-project-structure)
+- [📄 License](#-license)
 
 ## 🎯 Use Case & Rationale
 
-### **Problem Statement**
-Modern streaming platforms offer overwhelming choice but lack **emotional intelligence** in recommendations. Users struggle to find films matching their **current mood, context, and nuanced preferences**.
+### Problem Statement
+Modern viewers face **choice paralysis** with 500,000+ movies across 100+ streaming platforms. Traditional recommendation engines use simplistic algorithms (collaborative filtering) that lack emotional intelligence and contextual understanding.
 
-### **Solution: Multi-Agent AI System**
-CineMatch AI employs a **coordinated team of specialized AI agents** that collaboratively:
-1. **Understand** emotional state and preferences
-2. **Research** from 500,000+ movie database
-3. **Analyze** cinematic elements and emotional resonance
-4. **Curate** personalized recommendations with explanations
+### Our Solution: Multi-Agent AI System
+CineMatch AI employs a **collaborative multi-agent architecture** where specialized AI agents work together to understand:
+- Emotional context ("I'm feeling nostalgic")
+- Cinematic preferences ("I love 90s sci-fi")
+- Practical constraints ("2-hour runtime for tonight")
+- Serendipity factors ("surprise me with something different")
 
-### **Why Multi-Agent?**
-- **Specialization**: Each agent excels at specific tasks
-- **Collaboration**: Agents share insights for holistic recommendations
-- **Error Resilience**: Failure in one agent doesn't collapse system
-- **Explainability**: Clear division of labor for transparency
+### Why Multi-Agent?
+A single LLM struggles with:
+- Maintaining context across multiple reasoning steps
+- Balancing competing objectives (relevance vs. diversity)
+- Fact-checking movie metadata
+- Handling real-time API integrations
 
----
+Our agent team divides these responsibilities for **higher accuracy, better explanations, and more personalized results**.
 
 ## 🤖 Agent Team Architecture
 
-### **Agent Roles & Responsibilities**
+### Agent Roles & Responsibilities
 
 ```mermaid
-graph TB
-    User[User Input] --> Supervisor{Supervisor Agent}
+graph TD
+    User[User Query] --> UI[React Interface]
+    UI --> O[Orchestrator Agent]
     
-    Supervisor --> Profiler[Preference Profiler]
-    Profiler --> |User Profile| Supervisor
+    O --> PP[Preference Profiler]
+    O --> NLU[Natural Language Parser]
+    O --> TMDB[TMDB Query Builder]
     
-    Supervisor --> Researcher[Content Researcher]
-    Researcher --> |Movie Data| Supervisor
+    PP --> |User Profile| O
+    NLU --> |Parsed Intent| TMDB
+    TMDB --> |API Call| TMDB_API[TMDB Database]
     
-    Supervisor --> Matcher[Taste Matcher]
-    Matcher --> |Similarity Scores| Supervisor
+    TMDB_API --> |Raw Data| FF[Filter & Format Agent]
+    FF --> |Structured Data| RA[Recommendation Analyzer]
+    RA --> |Curated Results| O
     
-    Supervisor --> Curator[Diversity Curator]
-    Curator --> |Variety Check| Supervisor
+    O --> UI
+    UI --> User
     
-    Supervisor --> Builder[Plan Builder]
-    Builder --> |Final Plan| Supervisor
-    
-    Supervisor --> Human{Human-in-the-Loop}
-    Human --> |Approval/Feedback| Supervisor
-    
-    Supervisor --> Output[Personalized Recommendations]
-    
-    style Supervisor fill:#4f46e5
-    style Profiler fill:#8b5cf6
-    style Researcher fill:#10b981
-    style Matcher fill:#f59e0b
-    style Curator fill:#ec4899
-    style Builder fill:#6366f1
-    style Human fill:#ef4444
+    style O fill:#4a00e0,color:#fff
+    style PP fill:#8e2de2,color:#fff
+    style TMDB fill:#22c1c3,color:#fff
+    style RA fill:#fdbb2d,color:#000
