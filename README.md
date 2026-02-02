@@ -1,56 +1,82 @@
-# 🎬 CineMatch AI - AI-Powered Entertainment Agent
-<<<<<<< HEAD
-=======
+# 🎬 CineMatch AI - Multi-Agent Entertainment Recommendation System
 
 [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI-orange)](https://ai.google.dev/)
+[![TMDB](https://img.shields.io/badge/TMDB-API-green)](https://www.themoviedb.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF?logo=vite)](https://vitejs.dev/)
+[![LangGraph](https://img.shields.io/badge/LangGraph-Multi--Agent-purple)](https://langchain.com/langgraph)
 
-<div align="center">
-  <img src="https://img.shields.io/badge/AI%20Powered-Ent%20Agent-purple" alt="AI Powered"/>
-  <img src="https://img.shields.io/badge/Real%20Time-Recommendations-green" alt="Real Time"/>
-  <img src="https://img.shields.io/badge/Mood%20Based-Selection-blue" alt="Mood Based"/>
-</div>
+🤖 **AI-Powered Entertainment Agent** that analyzes emotional wavelengths and cinematic tastes to curate personalized movie recommendations through coordinated multi-agent intelligence.
 
-<br>
+---
 
-<div align="center">
-  <h3>✨ Curating the Perfect Cinematic Escape ✨</h3>
-  <p>Our AI agent analyzes your emotional wavelength and tastes to find films you didn't know you needed to see.</p>
-</div>
+## 📋 Table of Contents
+- [Use Case & Rationale](#-use-case--rationale)
+- [Agent Team Architecture](#🤖-agent-team-architecture)
+- [Installation & Setup](#🚀-installation--setup)
+- [Example Interactions](#💬-example-interactions)
+- [Challenges & Solutions](#⚡-challenges--solutions)
+- [Project Structure](#📁-project-structure)
+- [API Reference](#🔧-api-reference)
+- [Deployment](#🚀-deployment)
+- [Contributing](#🤝-contributing)
+- [License](#📄-license)
 
-## 📸 Preview
+---
 
-<div align="center">
-  <img src="https://via.placeholder.com/800x450/0f172a/ffffff?text=CineMatch+AI+Interface" alt="CineMatch AI Interface" width="600"/>
-  <p><em>AI-powered movie recommendation interface</em></p>
-</div>
+## 🎯 Use Case & Rationale
 
-## 🚀 Features
+### **Problem Statement**
+Modern streaming platforms offer overwhelming choice but lack **emotional intelligence** in recommendations. Users struggle to find films matching their **current mood, context, and nuanced preferences**.
 
-### 🎭 **Smart Recommendations**
-- **Mood-Based Filtering**: AI analyzes your current emotional state
-- **Genre Intelligence**: Smart genre matching and exclusion
-- **Personalized Results**: Tailored to your unique preferences
+### **Solution: Multi-Agent AI System**
+CineMatch AI employs a **coordinated team of specialized AI agents** that collaboratively:
+1. **Understand** emotional state and preferences
+2. **Research** from 500,000+ movie database
+3. **Analyze** cinematic elements and emotional resonance
+4. **Curate** personalized recommendations with explanations
 
-### 🤖 **AI-Powered**
-- **Google Gemini Integration**: State-of-the-art AI recommendations
-- **Real-time Analysis**: Instant suggestions as you type
-- **Context-Aware**: Understands complex preferences
+### **Why Multi-Agent?**
+- **Specialization**: Each agent excels at specific tasks
+- **Collaboration**: Agents share insights for holistic recommendations
+- **Error Resilience**: Failure in one agent doesn't collapse system
+- **Explainability**: Clear division of labor for transparency
 
-### 💻 **Technical Excellence**
-- **Modern Stack**: React 18 + TypeScript + Vite
-- **Responsive Design**: Flawless on all devices
-- **Fast Performance**: Optimized loading and interactions
-- **Clean Code**: Well-structured and maintainable
+---
 
-## 📦 Quick Start
+## 🤖 Agent Team Architecture
 
-### Prerequisites
-- **Node.js 16+** (Download: https://nodejs.org/)
-- **Google Gemini API Key** (Free: https://ai.google.dev/)
+### **Agent Roles & Responsibilities**
 
-### Installation
->>>>>>> abddfcdb3511f1007a5a82e495a8ac9a6d1a1fac
+```mermaid
+graph TB
+    User[User Input] --> Supervisor{Supervisor Agent}
+    
+    Supervisor --> Profiler[Preference Profiler]
+    Profiler --> |User Profile| Supervisor
+    
+    Supervisor --> Researcher[Content Researcher]
+    Researcher --> |Movie Data| Supervisor
+    
+    Supervisor --> Matcher[Taste Matcher]
+    Matcher --> |Similarity Scores| Supervisor
+    
+    Supervisor --> Curator[Diversity Curator]
+    Curator --> |Variety Check| Supervisor
+    
+    Supervisor --> Builder[Plan Builder]
+    Builder --> |Final Plan| Supervisor
+    
+    Supervisor --> Human{Human-in-the-Loop}
+    Human --> |Approval/Feedback| Supervisor
+    
+    Supervisor --> Output[Personalized Recommendations]
+    
+    style Supervisor fill:#4f46e5
+    style Profiler fill:#8b5cf6
+    style Researcher fill:#10b981
+    style Matcher fill:#f59e0b
+    style Curator fill:#ec4899
+    style Builder fill:#6366f1
+    style Human fill:#ef4444
