@@ -1,0 +1,7 @@
+{
+  "name": "CineMatch AI",
+  "description": "An intelligent entertainment agent that provides hyper-personalized movie recommendations using Gemini and Google Search grounding for real-time streaming availability and ratings.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
